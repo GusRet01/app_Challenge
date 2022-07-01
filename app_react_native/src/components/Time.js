@@ -16,7 +16,7 @@ const Time = () => {
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
   const context = useContext(DateTimeContext);
-  const { dateContext, timeContext, toggleDateTime } = context;
+  const { dateContext, timeContext, toggleDateTime ,category } = context;
   const hora = date.getHours() + ":" + date.getMinutes();
 
   const onChange = (event, selectedDate) => {
@@ -26,7 +26,7 @@ const Time = () => {
   };
 
   useEffect(() => {
-    toggleDateTime(dateContext, hora);
+    toggleDateTime(dateContext, hora , category);
   }, [date]);
 
   const showMode = (currentMode) => {
@@ -71,16 +71,11 @@ export default Time;
 
 const styles = StyleSheet.create({
   mainContainer: {
-    borderWidth: 2,
-    borderColor: "green",
     flex: 0,
     justifyContent: "space-around",
     alignItems: "center",
-    // margin: 5,
   },
   timeTexContainer: {
-    // borderWidth: 0,
-    // borderColor: "#8D8D8D",
     flex: 0,
     flexDirection: "row",
   },
@@ -106,7 +101,7 @@ const styles = StyleSheet.create({
   },
   bottomTime: {
     margin: 2,
-    marginTop: 10,
+    marginTop: 20,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: "#8D8D8D",
@@ -117,15 +112,11 @@ const styles = StyleSheet.create({
     fontSize: 35,
     margin: 0,
     padding: 0,
-    // borderWidth:1,
-    // borderColor: "green",
   },
   textSearch: {
     color: "#8D8D8D",
     fontSize: 20,
     margin: 0,
     padding: 0,
-    // borderWidth:1,
-    // borderColor: "green",
   },
 });

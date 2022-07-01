@@ -12,11 +12,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 const BottomSheet = () => {
   const context = useContext(DateTimeContext);
-  const { dateContext, timeContext } = context;
-  const time = new Date();
-  const hour = time.getHours() + ":" + time.getMinutes();
-  const date =
-    time.getDate() + "/" + time.getMonth() + "/" + time.getFullYear();
+  const { dateContext, timeContext } = context; 
   const refRBSheet = useRef();
   const navigation = useNavigation();
 
@@ -29,8 +25,6 @@ const BottomSheet = () => {
           justifyContent: "center",
           alignItems: "center",
           marginHorizontal: 0,
-          // borderWidth: 1,
-          // borderColor: "red",
           backgroundColor: "#CAE9FF",
         }}
       >
@@ -45,7 +39,6 @@ const BottomSheet = () => {
           alignItems: "center",
           marginHorizontal: 20,
           marginVertical: 10,
-          // borderWidth: 1,
           borderColor: "#CAE9FF",
           borderBottomWidth: 3,
         }}
@@ -62,8 +55,6 @@ const BottomSheet = () => {
           alignItems: "center",
           marginHorizontal: 10,
           marginBottom:40,
-          // borderWidth: 3,
-          // borderColor: "red",
         }}
       >
         <TouchableOpacity
@@ -121,7 +112,6 @@ const BottomSheet = () => {
           justifyContent: "center",
           alignItems: "center",
           marginHorizontal: 0,
-          // borderWidth: 2,
           borderColor: "red",
           backgroundColor: "#CAE9FF",
         }}
@@ -132,18 +122,20 @@ const BottomSheet = () => {
         ref={refRBSheet}
         closeOnDragDown={true}
         closeOnPressMask={false}
+        
         customStyles={{
           wrapper: {
-            backgroundColor: "transparent",
+            backgroundColor: "transparent",       
           },
           container: {
             backgroundColor: "#5B5B5B",
             borderTopLeftRadius: 30,
             borderTopRightRadius: 30,
             flex: 8,
+            marginBottom:0,           
           },
           draggableIcon: {
-            backgroundColor: "#002",
+            backgroundColor: "#CAE9FF",            
           },
         }}
       >
@@ -199,9 +191,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   searchContainer: {
-    borderWidth: 1,
-    borderColor: "#8D8D8D",
-    flex: 0,
+    flex: 0.15,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",

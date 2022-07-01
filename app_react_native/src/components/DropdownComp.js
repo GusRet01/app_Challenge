@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
+import { useContext } from "react";
+import { DateTimeContext } from "../hooks/DateTimeContext";
 
 const data = [
   { label: "Opción 1", value: "1" },
@@ -15,6 +17,12 @@ const data = [
 
 const DropdownComp = () => {
   const [value, setValue] = useState(null);
+  const context = useContext(DateTimeContext);
+  const { category ,toggleDateTime } = context;
+
+  useEffect(() => {
+    toggleDateTime(null, null, value );
+  }, [value]);
 
   return (
     <>
@@ -43,8 +51,6 @@ const DropdownComp = () => {
 
 const styles = StyleSheet.create({
   mainContainer:{
-    // borderWidth: 1,
-    // borderColor: "green",
     flex:1,
     margin:5
   },
