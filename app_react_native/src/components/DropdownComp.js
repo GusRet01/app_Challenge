@@ -43,8 +43,8 @@ const DropdownComp = () => {
 
 const styles = StyleSheet.create({
   mainContainer:{
-    borderWidth: 1,
-    borderColor: "green",
+    // borderWidth: 1,
+    // borderColor: "green",
     flex:1,
     margin:5
   },

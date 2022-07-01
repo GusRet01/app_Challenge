@@ -23,10 +23,7 @@ const months = [
 const Calendar = () => {
   const context = useContext(DateTimeContext);
   const { dateContext, timeContext, toggleDateTime } = context;
-
-  console.log("date ---->>>", dateContext);
-  console.log("time ---->>>", timeContext);
-
+  
   // Calendario
 
   const [selectedStartDate, setSelectedStartDate] = useState(null);
