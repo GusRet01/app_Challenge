@@ -16,8 +16,7 @@ const App = () => {
   return (
     <DateTimeContextProvider>
       <>
-        {/* <BottomSheet /> */}
-        <StatusBar />
+         <StatusBar />
         <Tabs/>
       </>
     </DateTimeContextProvider>
@@ -35,37 +34,3 @@ const styles = StyleSheet.create({
 
 export default App;
 
-// const App = () => {
-//   const refRBSheet = useRef();
-
-//   return (
-//    <View
-//       style={{
-//         flex: 1,
-//         justifyContent: "center",
-//         alignItems: "center",
-//         backgroundColor: "#000",
-//       }}
-//     >
-//       <Button title="OPEN BOTTOM" onPress={() => refRBSheet.current.open()} />
-//       <RBSheet
-//         ref={refRBSheet}
-//         closeOnDragDown={true}
-//         closeOnPressMask={false}
-//         customStyles={{
-//           wrapper: {
-//             backgroundColor: "transparent",
-
-//           },
-//           draggableIcon: {
-//             backgroundColor: "#000",
-//           }
-//         }}
-//       >
-//        <Text>SIU</Text>
-//       </RBSheet>
-//     </View>
-//   );
-// };
-
-// export default App;

@@ -3,6 +3,7 @@ import { Button, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import CalendarPicker from "react-native-calendar-picker";
 import { useContext } from "react";
 import { DateTimeContext } from "../hooks/DateTimeContext";
+import { AntDesign } from '@expo/vector-icons';
 
 const weekday = ["D", "L", "M", "M", "J", "V", "S"];
 const months = [
@@ -22,20 +23,15 @@ const months = [
 
 const Calendar = () => {
   const context = useContext(DateTimeContext);
-  const { dateContext, timeContext, toggleDateTime } = context;
-  
-  // Calendario
-
+  const { dateContext, timeContext, toggleDateTime , category} = context;
   const [selectedStartDate, setSelectedStartDate] = useState(null);
   const startDate = selectedStartDate
     ? selectedStartDate.format("DD/MM/YYYY").toString()
     : "";
 
   useEffect(() => {
-    toggleDateTime(startDate, timeContext);
+    toggleDateTime(startDate, timeContext ,category);
   }, [selectedStartDate]);
-
-  console.log("selectedStartDate ->", selectedStartDate);
 
   return (
     <>
@@ -44,11 +40,13 @@ const Calendar = () => {
           onDateChange={setSelectedStartDate}
           weekdays={weekday}
           months={months}
-          previousTitle={"<"}
-          nextTitle={">"}
+          previousComponent={<AntDesign name="leftcircle" size={28} color="#fff" />}
+          nextComponent={<AntDesign name="rightcircle" size={28} color="#fff" />}
           textStyle={styles.text}
-          // scrollable={true}
-          // horizontal={true}
+          selectedDayColor="#CAE9FF"
+          monthTitleStyle={styles.textMonthYear}
+          yearTitleStyle={styles.textMonthYear}
+        
         />
       </View>
     </>
@@ -60,9 +58,10 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   contaniner: {
-    flex: 1.2,
-    borderWidth: 1,
-    borderColor: "red",
+    flex: 0.9,
   },
+  textMonthYear:{
+    fontSize:20,    
+  }
 });
 export default Calendar;

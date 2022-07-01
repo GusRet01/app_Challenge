@@ -37,7 +37,7 @@ function Stacknavigator() {
 function TabNavigator() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Calendar"
       screenOptions={{
         tabBarActiveTintColor: "#72C3FF",
       }}
