@@ -53,8 +53,6 @@ const styles = StyleSheet.create({
     textAlign:"center"
   },
   dropdown: {
-  //  flex:0.5,
-  //  flexDirection: "column",
     margin: 10,
     padding:10,
     height: 50,

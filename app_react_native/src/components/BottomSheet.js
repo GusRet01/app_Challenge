@@ -1,11 +1,19 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import RBSheet from "react-native-raw-bottom-sheet";
+import Calendar from "./Calendar";
 import DropdownComp from "./DropdownComp";
-
-
+import Time from "./Time";
+import { useContext } from "react";
+import { DateTimeContext } from "../hooks/DateTimeContext";
 
 const BottomSheet = () => {
+  const context = useContext(DateTimeContext);
+  const { dateContext, timeContext } = context;
+  const time = new Date();
+  const hour = time.getHours() + ":" + time.getMinutes();
+  const date =
+    time.getDate() + "/" + time.getMonth() + "/" + time.getFullYear();
   const refRBSheet = useRef();
 
   return (
@@ -35,7 +43,7 @@ const BottomSheet = () => {
           borderColor: "red",
         }}
       >
-          <DropdownComp />
+        <DropdownComp />
       </View>
 
       <View
@@ -53,14 +61,14 @@ const BottomSheet = () => {
           style={styles.botton}
           onPress={() => refRBSheet.current.open()}
         >
-          <Text style={styles.text}>Fecha</Text>
+          <Text style={styles.text}>{dateContext}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.botton}
           onPress={() => refRBSheet.current.open()}
         >
-          <Text style={styles.text}>Hora</Text>
+          <Text style={styles.text}>{timeContext}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.bottonGo}>
@@ -93,13 +101,25 @@ const BottomSheet = () => {
             backgroundColor: "#5B5B5B",
             borderTopLeftRadius: 30,
             borderTopRightRadius: 30,
+            flex: 8,
           },
           draggableIcon: {
             backgroundColor: "#002",
           },
         }}
       >
-        <Text>Calendario</Text>
+        <Calendar />
+
+        <Time />
+
+        <View style={styles.searchContainer}>
+          <TouchableOpacity
+            style={styles.bottomSearch}
+            onPress={() => refRBSheet.current.close()}
+          >
+            <Text style={styles.textSearch}>Buscar</Text>
+          </TouchableOpacity>
+        </View>
       </RBSheet>
     </>
   );
@@ -127,11 +147,25 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   text: {
-    fontSize: 18,
+    fontSize: 14,
   },
   textGo: {
     fontSize: 24,
     color: "#fff",
+  },
+  bottomSearch: {
+    backgroundColor: "#CAE9FF",
+    borderRadius: 30,
+    paddingHorizontal: 25,
+    paddingVertical: 5,
+  },
+  searchContainer: {
+    borderWidth: 1,
+    borderColor: "#8D8D8D",
+    flex: 0,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
