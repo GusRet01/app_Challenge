@@ -9,13 +9,16 @@ import {
 } from "react-native";
 import RBSheet from "react-native-raw-bottom-sheet";
 import BottomSheet from "./src/components/BottomSheet";
+import DateTimeContextProvider from "./src/hooks/DateTimeContext";
 
 const App = () => {
   return (
-    <>
-      <BottomSheet />
-      <StatusBar />
-    </>
+    <DateTimeContextProvider>
+      <>
+        <BottomSheet />
+        <StatusBar />
+      </>
+    </DateTimeContextProvider>
   );
 };
 
