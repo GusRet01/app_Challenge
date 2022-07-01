@@ -10,13 +10,15 @@ import {
 import RBSheet from "react-native-raw-bottom-sheet";
 import BottomSheet from "./src/components/BottomSheet";
 import DateTimeContextProvider from "./src/hooks/DateTimeContext";
+import Tabs from "./src/navigation/Tabs";
 
 const App = () => {
   return (
     <DateTimeContextProvider>
       <>
-        <BottomSheet />
+        {/* <BottomSheet /> */}
         <StatusBar />
+        <Tabs/>
       </>
     </DateTimeContextProvider>
   );
