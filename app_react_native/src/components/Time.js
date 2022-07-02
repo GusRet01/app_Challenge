@@ -17,7 +17,13 @@ const Time = () => {
   const [show, setShow] = useState(false);
   const context = useContext(DateTimeContext);
   const { dateContext, timeContext, toggleDateTime ,category } = context;
-  const hora = date.getHours() + ":" + date.getMinutes();
+  const hour = date.getHours()
+  const minute = + date.getMinutes();
+
+  // Se agrego una corrección de la hora con los ceros por delante.
+  const resultHour = hour < 10 ? "0" + hour : hour
+  const resultMinute = minute < 10 ? "0" + minute : minute
+  const hourTime = resultHour + ":" + resultMinute;
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -26,7 +32,7 @@ const Time = () => {
   };
 
   useEffect(() => {
-    toggleDateTime(dateContext, hora , category);
+    toggleDateTime(dateContext, hourTime , category);
   }, [date]);
 
   const showMode = (currentMode) => {
@@ -51,7 +57,7 @@ const Time = () => {
       </View>
 
       <TouchableOpacity style={styles.bottomTime} onPress={showTimepicker}>
-        <Text style={styles.numTime}>{hora}</Text>
+        <Text style={styles.numTime}>{hourTime}</Text>
       </TouchableOpacity>
 
       {show && (
